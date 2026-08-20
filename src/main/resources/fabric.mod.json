@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "carryon_enderpearl_addon",
+  "version": "${version}",
+  "name": "Carry On Ender Pearl Addon",
+  "description": "Server-side Carry On addon that lets players carry flying Ender Pearls.",
+  "authors": [
+    "OpenAI"
+  ],
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.annie.carryonenderpearl.CarryOnEnderPearlAddon"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": ">=26.2 <27",
+    "fabric-api": "*",
+    "carryon": ">=2.11.0"
+  }
+}
