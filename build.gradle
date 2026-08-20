@@ -12,9 +12,11 @@ base {
 
 repositories {
     mavenCentral()
+
     maven {
         url = "https://maven.fabricmc.net/"
     }
+
     maven {
         url = "https://maven.blamejared.com/"
     }
@@ -23,10 +25,12 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
 
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    modCompileOnly "tschipp.carryon:carryon-fabric-26.2:${project.carryon_version}"
+    // Carry On is needed for compiling our addon,
+    // but is not bundled inside our finished jar.
+    compileOnly "tschipp.carryon:carryon-fabric-26.2:${project.carryon_version}"
 }
 
 loom {
