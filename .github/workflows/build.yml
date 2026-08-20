@@ -23,10 +23,10 @@ jobs:
           distribution: temurin
           java-version: '25'
 
-      - name: Set up Gradle 8.14
+      - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
         with:
-          gradle-version: '8.14'
+          gradle-version: '9.1.0'
 
       - name: Build mod
         run: gradle build --stacktrace
