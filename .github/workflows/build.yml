@@ -1,0 +1,41 @@
+name: Build Carry On Ender Pearl Addon
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - name: Set up Gradle 8.14
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '8.14'
+
+      - name: Build mod
+        run: gradle build --stacktrace
+
+      - name: Upload compiled mod
+        uses: actions/upload-artifact@v4
+        with:
+          name: carryon-enderpearl-addon-fabric-26.2
+          path: |
+            build/libs/*.jar
+            !build/libs/*-sources.jar
+          if-no-files-found: error
